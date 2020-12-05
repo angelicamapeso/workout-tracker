@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 //set port
 const PORT = process.env.PORT || 3000;
@@ -17,7 +18,18 @@ app.use(express.static('public'));
 //HTML Routes
 app.use(require('./routes/html-routes.js'));
 
-//start server
-app.listen(PORT, () => {
-  console.log(`App running on port: ${PORT}.`);
-});
+//connect to database
+mongoose
+  .connect('mongodb://localhost/workout', {
+    //to fix deprecation warnings
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(function () {
+    //start server
+    app.listen(PORT, () => {
+      console.log(`App running on port: ${PORT}.`);
+    });
+  });
