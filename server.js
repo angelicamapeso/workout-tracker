@@ -14,6 +14,9 @@ app.use(express.json());
 //set static assets
 app.use(express.static('public'));
 
+//HTML Routes
+app.use(require('./routes/html-routes.js'));
+
 //start server
 app.listen(PORT, () => {
   console.log(`App running on port: ${PORT}.`);
