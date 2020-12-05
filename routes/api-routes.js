@@ -19,4 +19,20 @@ router.post('/workouts', async function(req, res) {
   }
 });
 
+router.put('/workouts/:id', async function(req, res) {
+  const id = req.params.id;
+
+  try {
+    const workout = await db.Workout.findOne({ _id: id});
+    if (!workout) res.status(404).json({ error: 'Workout not found.' });
+
+    workout.exercises.push(req.body);
+    workout.save();
+    res.status(200).json(workout);
+  } catch(err) {
+    res.status(500).json({ error: err });
+    console.log(err);
+  }
+});
+
 module.exports = router;
