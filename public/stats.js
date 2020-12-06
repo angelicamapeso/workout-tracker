@@ -231,3 +231,24 @@ function getCardioExerciseNames(data) {
 
   return cardio;
 }
+
+function getCardioDurations(data, cardioNames) {
+  let cardioDurations = [];
+
+  cardioNames.forEach(name => {
+    let totalDuration = 0;
+    data.forEach(workout => {
+      workout.exercises.forEach(exercise => {
+        if (
+          exercise.type === 'cardio' &&
+          exercise.name.toLowerCase() === name.toLowerCase()
+        ) {
+          totalDuration += exercise.duration;
+        }
+      });
+    });
+    cardioDurations.push(totalDuration);
+  });
+
+  return cardioDurations;
+}
