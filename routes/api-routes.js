@@ -35,4 +35,11 @@ router.put('/workouts/:id', async function(req, res) {
   }
 });
 
+function getThisSundayDate() {
+  const today = new Date();
+  const thisSunday = new Date(today.setDate(today.getDate() - today.getDay()));
+  thisSunday.setHours(0, 0, 0, 0);
+  return thisSunday;
+}
+
 module.exports = router;
