@@ -145,6 +145,7 @@ function populateChart(data) {
     },
   });
 
+  // Modified pie chart - now showing total duration of cardio exercises
   let pieChart = new Chart(pie, {
     type: 'pie',
     data: {
