@@ -22,7 +22,7 @@ app.use('/api', require('./routes/api-routes.js'));
 
 //connect to database
 mongoose
-  .connect('mongodb://localhost/workout', {
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
     //to fix deprecation warnings
     useNewUrlParser: true,
     useFindAndModify: false,
