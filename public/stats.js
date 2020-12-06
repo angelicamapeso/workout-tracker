@@ -37,6 +37,7 @@ function populateChart(data) {
   let pounds = calculateTotalWeight(data);
   let cardioExerciseNames = getCardioExerciseNames(data);
   let cardioDurations = getCardioDurations(data, cardioExerciseNames);
+  let resistanceExerciseNames = getResistanceNames(data);
   const colors = generatePalette();
 
   let line = document.querySelector('#canvas').getContext('2d');
@@ -170,7 +171,7 @@ function populateChart(data) {
   let donutChart = new Chart(pie2, {
     type: 'doughnut',
     data: {
-      labels: workouts,
+      labels: resistanceExerciseNames,
       datasets: [
         {
           label: 'Total Pounds of Resistance Excercises Performed',
