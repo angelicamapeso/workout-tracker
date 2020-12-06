@@ -42,4 +42,29 @@ function getThisSundayDate() {
   return thisSunday;
 }
 
+// Format workouts so that each workout is in the
+// correct position of the workouts array
+// 0 - this Sunday
+// 1 - this Monday
+// etc.
+function formatWorkouts(workouts) {
+  const workoutArray = [];
+  for (let i = 0; i < 7; i++) {
+    const dayWorkout = workouts.find(workout => workout.day.getDay() === i);
+    if (dayWorkout) {
+      workoutArray.push(dayWorkout);
+    } else {
+      const fillerDate = new Date();
+      fillerDate.setDate(new Date().getDate() - (6 - i));
+      fillerDate.setHours(0, 0, 0, 0);
+      workoutArray.push({
+        day: new Date(fillerDate),
+        exercises: [],
+      });
+    }
+  }
+  console.log(workoutArray);
+  return workoutArray;
+}
+
 module.exports = router;
