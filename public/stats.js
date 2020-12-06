@@ -220,7 +220,10 @@ function getCardioExerciseNames(data) {
 
   data.forEach(workout => {
     workout.exercises.forEach(exercise => {
-      if (exercise.type === 'cardio') {
+      if (
+        exercise.type === 'cardio' &&
+        !cardio.find(name => exercise.name.toLowerCase() === name.toLowerCase())
+      ) {
         cardio.push(exercise.name);
       }
     });
