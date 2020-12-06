@@ -8,7 +8,8 @@ async function initWorkout() {
 
     const workoutSummary = {
       date: formatDate(lastWorkout.day),
-      totalDuration: lastWorkout.totalDuration,
+      totalDuration: lastWorkout.exercises.reduce(
+        (totalDur, currExercise) => totalDur + currExercise.duration, 0),
       numExercises: lastWorkout.exercises.length,
       ...tallyExercises(lastWorkout.exercises)
     };
