@@ -255,3 +255,22 @@ function getCardioDurations(data, cardioNames) {
 
   return cardioDurations;
 }
+
+function getResistanceNames(data) {
+  let resistance = [];
+
+  data.forEach(workout => {
+    workout.exercises.forEach(exercise => {
+      if (
+        exercise.type === 'resistance' &&
+        !resistance.find(
+          name => exercise.name.toLowerCase() === name.toLowerCase()
+        )
+      ) {
+        resistance.push(exercise.name);
+      }
+    });
+  });
+
+  return resistance;
+}
