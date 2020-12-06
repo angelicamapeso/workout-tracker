@@ -13,8 +13,14 @@ router.get('/workouts', async function (req, res) {
 router.post('/workouts', async function (req, res) {
   try {
     // only create it if a workout doesn't exist for that day
-    const newWorkout = await db.Workout.create(req.body);
-    res.status(201).json(newWorkout);
+    const newWorkout = new db.Workout();
+    const existingWorkout = await db.Workout.findOne({ day: newWorkout.day });
+    if (existingWorkout) {
+      res.status(201).json(existingWorkout);
+    } else {
+      newWorkout.save();
+      res.status(201).json(newWorkout);
+    }
   } catch (err) {
     res.status(500).json({ error: err });
   }
