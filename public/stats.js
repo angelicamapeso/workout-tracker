@@ -189,9 +189,12 @@ function duration(data) {
   let durations = [];
 
   data.forEach(workout => {
-    workout.exercises.forEach(exercise => {
-      durations.push(exercise.duration);
-    });
+    // Fix - ensure that total duration for one day is shown
+    const totalDuration = workout.exercises.reduce(
+      (totalDurr, currExercise) => totalDurr + currExercise.duration,
+      0
+    );
+    durations.push(totalDuration);
   });
 
   return durations;
