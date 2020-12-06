@@ -70,6 +70,7 @@ function populateChart(data) {
       responsive: true,
       title: {
         display: true,
+        text: 'Total Workout Duration In Minutes',
       },
       scales: {
         xAxes: [
