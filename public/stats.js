@@ -38,6 +38,7 @@ function populateChart(data) {
   let cardioExerciseNames = getCardioExerciseNames(data);
   let cardioDurations = getCardioDurations(data, cardioExerciseNames);
   let resistanceExerciseNames = getResistanceNames(data);
+  let resistanceWeights = getResistanceWeight(data, resistanceExerciseNames);
   const colors = generatePalette();
 
   let line = document.querySelector('#canvas').getContext('2d');
@@ -176,7 +177,7 @@ function populateChart(data) {
         {
           label: 'Total Pounds of Resistance Excercises Performed',
           backgroundColor: colors,
-          data: pounds,
+          data: resistanceWeights,
         },
       ],
     },
