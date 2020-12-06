@@ -85,7 +85,6 @@ function formatWorkouts(workouts) {
       });
     }
   }
-  console.log(workoutArray);
   return workoutArray;
 }
 
