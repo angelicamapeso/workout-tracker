@@ -35,6 +35,21 @@ router.put('/workouts/:id', async function(req, res) {
   }
 });
 
+// Retrieves workouts for that week
+router.get('/workouts/range', async function (req, res) {
+  const thisSunday = getThisSundayDate();
+  try {
+    const workouts = await db.Workout.find({
+      day: { $gte: thisSunday },
+    });
+    const formattedWorkouts = formatWorkouts(workouts);
+    res.status(200).json(formattedWorkouts);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err });
+  }
+});
+
 function getThisSundayDate() {
   const today = new Date();
   const thisSunday = new Date(today.setDate(today.getDate() - today.getDay()));
