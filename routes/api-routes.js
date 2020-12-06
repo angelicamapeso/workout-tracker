@@ -49,7 +49,7 @@ router.get('/workouts/range', async function (req, res) {
     const workouts = await db.Workout.find({
       day: { $gte: thisSunday },
     });
-    const formattedWorkouts = formatWorkouts(workouts);
+    const formattedWorkouts = formatWorkoutsForWeek(workouts);
     res.status(200).json(formattedWorkouts);
   } catch (err) {
     console.log(err);
@@ -69,16 +69,15 @@ function getThisSundayDate() {
 // 0 - this Sunday
 // 1 - this Monday
 // etc.
-function formatWorkouts(workouts) {
+function formatWorkoutsForWeek(workouts) {
   const workoutArray = [];
   for (let i = 0; i < 7; i++) {
     const dayWorkout = workouts.find(workout => workout.day.getDay() === i);
     if (dayWorkout) {
       workoutArray.push(dayWorkout);
     } else {
-      const fillerDate = new Date();
-      fillerDate.setDate(new Date().getDate() - (6 - i));
-      fillerDate.setHours(0, 0, 0, 0);
+      const fillerDate = getThisSundayDate();
+      fillerDate.setDate(fillerDate.getDate() + i);
       workoutArray.push({
         day: new Date(fillerDate),
         exercises: [],
