@@ -204,9 +204,12 @@ function calculateTotalWeight(data) {
   let total = [];
 
   data.forEach(workout => {
-    workout.exercises.forEach(exercise => {
-      total.push(exercise.weight);
-    });
+    //Fix - ensure total weight for one day is shown
+    const totalWeight = workout.exercises.reduce(
+      (totalWt, currExercise) => totalWt + currExercise.weight,
+      0
+    );
+    total.push(totalWeight);
   });
 
   return total;
