@@ -209,10 +209,13 @@ function calculateTotalWeight(data) {
 
   data.forEach(workout => {
     //Fix - ensure total weight for one day is shown
-    const totalWeight = workout.exercises.reduce(
-      (totalWt, currExercise) => totalWt + currExercise.weight,
-      0
-    );
+    const totalWeight = workout.exercises.reduce((totalWt, currExercise) => {
+      if (currExercise.type === 'resistance') {
+        return totalWt + currExercise.weight;
+      } else {
+        return totalWt + 0;
+      }
+    }, 0);
     total.push(totalWeight);
   });
 
