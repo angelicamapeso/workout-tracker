@@ -57,7 +57,7 @@ function populateChart(data) {
       ],
       datasets: [
         {
-          label: 'Workout Duration In Minutes',
+          label: 'Total Workout Duration In Minutes',
           backgroundColor: 'red',
           borderColor: 'red',
           data: durations,
@@ -130,7 +130,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Pounds Lifted',
+        text: 'Total Pounds Lifted',
       },
       scales: {
         yAxes: [
@@ -150,7 +150,7 @@ function populateChart(data) {
       labels: workouts,
       datasets: [
         {
-          label: 'Excercises Performed',
+          label: 'Total Duration of Cardio Excercises Performed',
           backgroundColor: colors,
           data: durations,
         },
@@ -159,7 +159,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Excercises Performed',
+        text: 'Total Duration of Cardio Excercises Performed',
       },
     },
   });
@@ -170,7 +170,7 @@ function populateChart(data) {
       labels: workouts,
       datasets: [
         {
-          label: 'Excercises Performed',
+          label: 'Total Pounds of Resistance Excercises Performed',
           backgroundColor: colors,
           data: pounds,
         },
@@ -179,7 +179,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Excercises Performed',
+        text: 'Total Pounds of Resistance Excercises Performed',
       },
     },
   });
