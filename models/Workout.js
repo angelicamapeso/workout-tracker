@@ -15,6 +15,10 @@ const workoutSchema = new Schema({
   ],
 });
 
+workoutSchema.pre('validate', function () {
+  this.day.setHours(0, 0, 0, 0);
+});
+
 const Workout = mongoose.model('Workout', workoutSchema);
 
 module.exports = Workout;
