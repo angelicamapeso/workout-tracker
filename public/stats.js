@@ -36,6 +36,7 @@ function populateChart(data) {
   let durations = duration(data);
   let pounds = calculateTotalWeight(data);
   let cardioExerciseNames = getCardioExerciseNames(data);
+  let cardioDurations = getCardioDurations(data, cardioExerciseNames);
   const colors = generatePalette();
 
   let line = document.querySelector('#canvas').getContext('2d');
@@ -152,7 +153,7 @@ function populateChart(data) {
         {
           label: 'Total Duration of Cardio Excercises Performed',
           backgroundColor: colors,
-          data: durations,
+          data: cardioDurations,
         },
       ],
     },
