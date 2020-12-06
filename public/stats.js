@@ -278,3 +278,26 @@ function getResistanceNames(data) {
 
   return resistance;
 }
+
+function getResistanceWeight(data, resistanceExerciseNames) {
+  let resistanceWeights = [];
+
+  resistanceExerciseNames.forEach(name => {
+    let totalWeight = 0;
+
+    data.forEach(workout => {
+      workout.exercises.forEach(exercise => {
+        if (
+          exercise.type === 'resistance' &&
+          exercise.name.toLowerCase() === name.toLowerCase()
+        ) {
+          totalWeight += exercise.weight;
+        }
+      });
+    });
+
+    resistanceWeights.push(totalWeight);
+  });
+
+  return resistanceWeights;
+}
