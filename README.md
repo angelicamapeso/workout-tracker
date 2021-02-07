@@ -1,4 +1,4 @@
-# Bootcamp - Homework 12: Workout Tracker
+# Workout Tracker
 
 ![Workout tracker homepage](./img/fitnesstracker-homepage.png)
 
@@ -37,5 +37,3 @@ Reach your fitness goals faster by logging your workout progress!
 ## License
 
 This project is licensed under the **MIT License**.
-
-This homework assignment is part of the [Carleton University Coding Bootcamp](https://bootcamp.carleton.ca/).
